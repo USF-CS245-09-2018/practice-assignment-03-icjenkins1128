@@ -53,14 +53,52 @@ public class Practice03Test {
 
 
 	public int find_min_iterative () {
-		// TODO: Fill in this iterative function.
+        
+        int min = 0;
+        
+        //runs through the array to find the min index
+        for(int i = 0; i <= arr.length - 1; i++) {
+            
+            if(arr[i] < arr[min]){
+                
+                min = i;
+                
+            }
+            
+        }
+        
+        return min;
+        
 	}
 
 
 	public int find_min_recursive () {
-		// TODO: Fill in this recursive function.
+        
+		return findMinRecursive(arr, 0, arr.length - 1);
 	}
+    
+    public int findMinRecursive(double[] theArray, int theI, int arrSize){
+        
+        //base case if it runs into the end of the array
+        if(theI == arrSize){
+            
+           return theI;
+           
+        }
+         
+        int theMin = findMinRecursive(theArray, theI + 1, arrSize);
+        
+        //recursively compare the current min to the next element in the array to find the min index
+        if(theArray[theMin] < theArray[theI]){
+            
+                return theMin;
+            
+        }
+        
+        //if it cannot find the lowest, it returns the index
+        return theI;
 
+    }
 
 	/**
 	 * print_min: determines the min iteratively and recursively.
